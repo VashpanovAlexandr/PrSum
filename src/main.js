@@ -2,8 +2,9 @@
 import { mat4 } from 'gl-matrix';
 import vxShaderStr from './main.vert';
 import fsShaderStr from './main.frag';
-import TexTex from './Fish.jpg';
+import TexTex from './A.jpg';
 import Hash from '../hash.txt';
+import './main.css';
 
 class DrawFr {
   constructor () {
@@ -79,7 +80,7 @@ class DrawFr {
     this.initGL(canvas);
     this.initShaders();
     this.initBuffers();
-    var mtexture = this.loadTexture(this.gl, 'Fish.jpg');
+    var mtexture = this.loadTexture(this.gl, 'A.jpg');
   
     this.gl.clearColor(0.0, 0.0, 0.0, 1.0);
     this.gl.enable(this.gl.DEPTH_TEST);

@@ -33,11 +33,24 @@ module.exports = {
         }
       },
       {
+        test: /.(txt)$/,
+        use: {
+          loader: 'raw-loader'
+        }
+      },
+      {
         test: /\.html$/,
         use: [
           {
             loader: 'html-loader'
           }
+        ]
+      },
+      {
+        test: /\.css$/,
+        use: [
+          'style-loader',
+          'css-loader'
         ]
       }
     ]
