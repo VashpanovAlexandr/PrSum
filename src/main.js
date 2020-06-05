@@ -43,7 +43,7 @@ class DrawFr {
     }
     canvas.addEventListener('wheel', (evt) => {
       this.mousePos = getMousePos(canvas, evt);
-      var modifiedMousePos = {x:this.mousePos.x, y:800 - this.mousePos.y};
+      var modifiedMousePos = {x:this.mousePos.x, y:500 - this.mousePos.y};
   
       this.CalZone(modifiedMousePos, evt.deltaY / 10.0);
       
@@ -64,8 +64,8 @@ class DrawFr {
         this.mousePos = getMousePos(canvas, evt);
         document.getElementById('webglCanvas').style.cursor = 'move';
   
-        const newLeft = this.Zone.left + -(this.mousePos.x - prevMousePos.x) / 800.0 * (this.Zone.right - this.Zone.left);
-        const newBottom = this.Zone.bottom + (this.mousePos.y - prevMousePos.y) / 800.0 * (this.Zone.top - this.Zone.bottom);
+        const newLeft = this.Zone.left + -(this.mousePos.x - prevMousePos.x) / 500.0 * (this.Zone.right - this.Zone.left);
+        const newBottom = this.Zone.bottom + (this.mousePos.y - prevMousePos.y) / 500.0 * (this.Zone.top - this.Zone.bottom);
         const newRight = newLeft + (this.Zone.right - this.Zone.left);
         const newTop = newBottom + (this.Zone.top - this.Zone.bottom);
   
@@ -243,8 +243,8 @@ class DrawFr {
     else
         new_scale /= 1 - 0.5 * scroll / 100.0;
 
-    new_l = this.Zone.left + mouse_pos.x / 800.0 * (this.Zone.right - this.Zone.left) * (1 - new_scale);
-    new_b = this.Zone.bottom + mouse_pos.y / 800.0 * (this.Zone.top - this.Zone.bottom) * (1 - new_scale);
+    new_l = this.Zone.left + mouse_pos.x / 500.0 * (this.Zone.right - this.Zone.left) * (1 - new_scale);
+    new_b = this.Zone.bottom + mouse_pos.y / 500.0 * (this.Zone.top - this.Zone.bottom) * (1 - new_scale);
     new_r = new_l + (this.Zone.right - this.Zone.left) * new_scale;
     new_t = new_b + (this.Zone.top - this.Zone.bottom) * new_scale;
 
