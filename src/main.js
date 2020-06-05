@@ -3,6 +3,7 @@ import { mat4 } from 'gl-matrix';
 import vxShaderStr from './main.vert';
 import fsShaderStr from './main.frag';
 import TexTex from './Fish.jpg';
+import Hash from '../hash.txt';
 
 class DrawFr {
   constructor () {
@@ -25,6 +26,7 @@ class DrawFr {
         top : 1,
         scale : 1
     };
+    document.getElementById('Hash').innerHTML += ' Git Hash: ' + Hash;
     document.getElementById('inputCheckersCellR').value = 30;
     document.getElementById('inputCheckersCellG').value = 30;
     document.getElementById('inputCheckersCellB').value = 30;
