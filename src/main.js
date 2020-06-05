@@ -4,11 +4,14 @@ import vxShaderStr from './main.vert';
 import fsShaderStr from './main.frag';
 import TexTex from './A.jpg';
 import Hash from '../hash.txt';
+import * as dat from 'dat.gui';
+
 import './main.css';
 
 class DrawFr {
   constructor () {
     this.shaderProgram = 0.;
+    this.gui = new dat.GUI();
     this.mousePos = [0, 0];
     this.squareVertexPositionBuffer = 0;
     this.IsHold = 0;
@@ -28,11 +31,7 @@ class DrawFr {
         scale : 1
     };
     document.getElementById('Hash').innerHTML += ' Git Hash: ' + Hash;
-    document.getElementById('inputCheckersCellR').value = 30;
-    document.getElementById('inputCheckersCellG').value = 30;
-    document.getElementById('inputCheckersCellB').value = 30;
 
-    
     var canvas = document.getElementById('webglCanvas');
 
     function getMousePos(canvas, evt) {
@@ -76,7 +75,9 @@ class DrawFr {
         this.Zone.top = newTop;
       }
     }, false);
-  
+    this.gui.add(this, "checkersCellR");
+    this.gui.add(this, "checkersCellG");
+    this.gui.add(this, "checkersCellB");
     this.initGL(canvas);
     this.initShaders();
     this.initBuffers();
@@ -227,11 +228,7 @@ class DrawFr {
 
   tick = () => {
     window.requestAnimationFrame(this.tick);
-    this.updateCheckersCellR();
-    this.updateCheckersCellG();
-    this.updateCheckersCellB();
     this.drawScene();
-    // console.log('tick' + new Date());
   }
 
   CalZone = ( mouse_pos, scroll ) => {
@@ -255,22 +252,6 @@ class DrawFr {
     this.Zone.right = new_r;
     this.Zone.bottom = new_b;
     this.Zone.top = new_t;
-  }
-
-  updateCheckersCellR () {
-    var data = document.getElementById('inputCheckersCellR').value;
-    this.checkersCellR = parseInt(data);
-    if (isNaN(this.checkersCellR)) this.checkersCellR = 1;
-  }
-  updateCheckersCellG () {
-    var data = document.getElementById('inputCheckersCellG').value;
-    this.checkersCellG = parseInt(data);
-    if (isNaN(this.checkersCellG)) this.checkersCellG = 1;
-  }
-  updateCheckersCellB () {
-    var data = document.getElementById('inputCheckersCellB').value;
-    this.checkersCellB = parseInt(data);
-    if (isNaN(this.checkersCellB)) this.checkersCellB = 1;
   }
 }
 
